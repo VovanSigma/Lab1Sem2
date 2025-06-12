@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - SiteRBC</title>
+	<link rel="stylesheet" href="~/css/bootstrap.min.css" type="text/css" />
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-expand-md bg-dark sticky-top border-bottom" data-bs-theme="dark">
+			<div class="container">
+				<a href="@Url.Action("Tour", "Home")">
+					<img src="~/images/Company-logo.png" width="105" height="60">
+				</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+					<div class="offcanvas-header">
+						<h5 class="offcanvas-title" id="offcanvasLabel">Aperture</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+					</div>
+					<div class="offcanvas-body">
+						<ul class="navbar-nav flex-grow-1 justify-content-between">
+							<li class="nav-item">
+								<a class="nav-link" href="#">
+									<svg class="bi" width="24" height="24"><use xlink:href="#aperture"></use></svg>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="@Url.Action("Tour", "Home")">Tour</a>
+							</li>
+							<li class="nav-item"><a class="nav-link" href="@Url.Action("Product", "ReadyList")">Product</a></li>
+							<li class="nav-item"><a class="nav-link" href="@Url.Action("GenerelPageFeatures", "Features")">Features</a></li>
+							<li class="nav-item">
+								<a class="nav-link" href="@Url.Action("MainInformation", "AboutUs")">About us</a>
+							</li>
+							<li class="nav-item"><a class="nav-link" href="@Url.Action("GeneralSupportPage", "Support")">Support</a></li>
+							<li class="nav-item"><a class="nav-link" href="@Url.Action("GeneralPageCalc", "ProductCalc")">Product Calc</a></li>
+							<li class="nav-item">
+								@if (User.Identity.IsAuthenticated)
+								{
+									<!-- Якщо користувач увійшов у систему -->
+									<a class="nav-link" href="@Url.Action("Profile", "Accounts")">
+										<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+											<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+											<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+										</svg>
+										<span>Profile</span>
+									</a>
+								}
+								else
+								{
+									<!-- Якщо користувач не увійшов -->
+									<a class="nav-link" href="@Url.Action("SignInAndUpUsers", "Accounts")">
+										<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+											<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+											<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+										</svg>
+										<span>Sign In</span>
+									</a>
+								}
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<div class="container">
+		<main role="main" class="pb-3">
+			@RenderBody()
+		</main>
+	</div>
+
+	<footer class="container py-5">
+		<div class="row">
+			<div class="col-12 col-md">
+				<a>
+					<img src="~/images/Company-logo-black.png" width="105" height="60">
+				</a>
+				<small class="d-block mb-3 text-body-secondary">© 2017–2024</small>
+			</div>
+			<div class="col-6 col-md">
+				<h5>Features</h5>
+				<ul class="list-unstyled text-small">
+					<li><a class="link-secondary text-decoration-none" href="#">Cool stuff</a></li>
+					<li><a class="link-secondary text-decoration-none" href="#">Random feature</a></li>
+					<li><a class="link-secondary text-decoration-none" href="#">Team feature</a></li>
+					<li><a class="link-secondary text-decoration-none" href="#">Stuff for developers</a></li>
+					<li><a class="link-secondary text-decoration-none" href="#">Another one</a></li>
+					<li><a class="link-secondary text-decoration-none" href="#">Last time</a></li>
+				</ul>
+			</div>
+			<div class="col-6 col-md">
+				<h5>Resources</h5>
+				<ul class="list-unstyled text-small">
+					<li><a class="link-secondary text-decoration-none" href="#">Resource name</a></li>
+					<li><a class="link-secondary text-decoration-none" href="#">Resource</a></li>
+					<li><a class="link-secondary text-decoration-none" href="#">Another resource</a></li>
+					<li><a class="link-secondary text-decoration-none" href="#">Final resource</a></li>
+				</ul>
+			</div>
+			<div class="col-6 col-md">
+				<h5>Resources</h5>
+				<ul class="list-unstyled text-small">
+					<li><a class="link-secondary text-decoration-none" href="#">Business</a></li>
+					<li><a class="link-secondary text-decoration-none" href="#">Education</a></li>
+					<li><a class="link-secondary text-decoration-none" href="#">Government</a></li>
+					<li><a class="link-secondary text-decoration-none" href="#">Gaming</a></li>
+				</ul>
+			</div>
+			<div class="col-6 col-md">
+				<h5>About</h5>
+				<ul class="list-unstyled text-small">
+					<li><a class="link-secondary text-decoration-none" href="#">Team</a></li>
+					<li><a class="link-secondary text-decoration-none" href="#">Locations</a></li>
+					<li><a class="link-secondary text-decoration-none" href="#">Privacy</a></li>
+					<li><a class="link-secondary text-decoration-none" href="#">Terms</a></li>
+				</ul>
+			</div>
+		</div>
+	</footer>
+	<script src="~/js/bootstrap.min.js"></script>
+	@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<SiteRBC.Models.Data.ReadyProduct>
+
+@{
+    ViewData["Title"] = "Admin Menu";
+}
+
+<h2>Admin Menu</h2>
+
+<a asp-controller="Products" asp-action="Create" class="btn btn-success">Add ready products</a>
+
+<table class="table mt-4">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Height</th>
+            <th>Width</th>
+            <th>Length</th>
+            <th>Time For Build</th>
+            <th>AdressImage</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Id</td>
+                <td>@product.Name</td>
+                <td>@product.Price</td>
+                <td>@product.height</td>
+                <td>@product.width</td>
+                <td>@product.length</td>
+                <td>@product.timeForBuild</td>
+                <td>@product.AdressImage</td>
+                <td>
+                    <form asp-controller="Products" asp-action="DeleteProduct" method="post" style="display:inline;">
+                        <input type="hidden" name="id" value="@product.Id" />
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Нова кнопка для переходу на сторінку FeedBackController -->
+<div class="mt-3">
+    <a asp-controller="AdminFunctional" asp-action="FeedBack" class="btn btn-primary">Go to Feedback</a>
+</div>
